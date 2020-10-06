@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+//function validate_phone(){
+	// var v=document.getElementById("p_ph").value;
+	  // var x=new XMLHttpRequest();
+	   //x.open("POST","checkphone.jsp?phone="+v,true);
+	 //  x.send();
+	//   x.onreadystatechange=function(){
+	//	   if(x.readyState==4){
+	//		   var vv=x.responseText;
+	//		   document.getElementById("phone").innerHTML=vv;
+	//	   }
+	//   }
+//}
+
+</script>
+</head>
+<body>
+<h1 align='center'>New Customer Registration</h1>
+<form action="RegisterCustomer" method="POST">
+<table border='0' width='580px' cellpadding='10' cellspacing='0' align='center'>
+<tr>
+<td>Customer ID</td>
+<td><input type=text id="cid" name="cid" required><br></td>
+</tr>
+<tr>
+<td>Customer Name</td>
+<td><input type=text id="name" name="name" required><br></td>
+</tr>
+<tr>
+<td>Address</td>
+<td><textarea id="address" name="address" rows="5" cols="20" required></textarea><br></td>
+</tr>
+<tr>
+<td>PAN Number</td>
+<td><input type=text id="name" name="pan" required ><br></td>
+<!-- <td><input type=text id="name" name="pan" required pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"><br></td> -->
+</tr>
+<tr>
+<td>DOB</td>
+<td><input type=text id="name" name="dob" required placeholder="dd-mm-yy"><br></td>
+</tr>
+<tr>
+<td>Primary Phone</td>
+<td><!--  <input type=text id="p_ph" name="p_ph" required pattern="[\+]\d{2}[\-]\d{10}"><div id="phone"></div><br></td>-->
+<input type=text id="p_ph" name="p_ph" required ><div id="phone"></div><br></td>
+</tr>
+<tr>
+<td>Primary Email</td>
+<td><input type=text id="p_email" name="p_email" required><br></td>
+</tr>
+<tr>
+<td>Alternate Phone</td>
+<td><input type=text id="a_ph" name="a_ph" ><br></td>
+<!-- <td><input type=text id="a_ph" name="a_ph" pattern="[\+]\d{2}[\-]\d{10}"><br></td> -->
+</tr>
+<tr>
+<td>Alternate Email</td>
+<td><input type=text id="a_email" name="a_email"><br></td>
+</tr>
+<tr>
+<td><input type=submit value=Submit ></td>
+</tr>
+</table>
+</form>
+
+</body>
+</html>
