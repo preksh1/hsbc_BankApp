@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="ISO-8859-1">
+    
+    <title>Funds Transfer</title>
+ 
+    <script type="text/javascript" type="text/javascript">
+    
+    function loadTransfer(){
+       var v1=document.getElementById("fmac").value;
+       alert(v1);
+       var v2=document.getElementById("n1").value;
+       var v3=document.getElementById("n2").value;
+ 	   var x=new XMLHttpRequest();
+ 	   x.open("GET","fundtransfer.jsp?faccot="+v1+"&toaccot="+v2+"&amont="+v3,true);
+ 	   x.send();
+ 	   x.onreadystatechange=function(){
+ 		   if(x.readyState==4){
+ 			   var vv=x.responseText;
+ 			   document.getElementById("result").innerHTML=vv;
+ 		   }
+ 	   }
+    }
+ 
+    function loadFromAccount(){
+    	//var v=document.getElementById("cc").value;//this id cc is the id whose value is displayed in above page of this
+    	//long v=12345678;
+    	var x=new XMLHttpRequest();
+		//step 2 how xhr will open connection with server
+		//x.open("GET","toaccount.jsp?custid="+v,true);
+		x.open("GET","toaccount.jsp?",true);
+		//step 3 how xhr will send request
+		x.send();
+		
+		//step 4 how xhr will get response from server
+		//state={0,1,2,3,4}
+		
+		x.onreadystatechange=function(){
+			if(x.readyState==4){
+				var vv=x.responseText;
+				document.getElementById("fromacc").innerHTML=vv;
+				
+			}
+		}
+    }
+    </script>
+  </head>
+    <!-- Navigation -->
+    <header>            
+                <a class="nav-link text-uppercase text-expanded" href="customerlogin.html">Customer Dashboard</a>
+    </header>
+   <body onload="loadFromAccount()" >
+    <main class="container">
+      <div class="container">
+        <div class="bg-faded p-4 my-4">
+          <hr class="divider">
+          <hr class="divider">
+          <center>
+          <form action="success.jsp" method=post>
+            
+           <label class="text-heading"> Hassle-Free FUND TRANSFER</label>
+           <br>
+           <br>
+            <div class="form-group col-lg-12">
+              <label class="text-heading">From Account</label> <div id="fromacc"></div>
+              </div>
+              <br>
+              <br>
+              <div class="form-group col-lg-12">
+                <label class="text-heading">To Account&nbsp;</label> <br>
+                <input type=number name=actno id="n1" required  pattern="^[0-9]*$">
+             </div>
+              <br>
+              <br>
+              <div class="form-group col-lg-12">
+                <label class="text-heading">Amount to Transfer</label> <br>
+                <input type=number name=amt id="n2" required pattern="^[0-9.]*$">
+              </div>
+              <br>
+              <br>
+              <div>
+                <input id="n3" type=submit value=Transfer class="btn btn-secondary" onclick="loadTransfer()">&nbsp;&nbsp;&nbsp;&nbsp;
+       			<input id="n4" type=reset value=clear class="btn btn-secondary">
+       			<div id="result"></div>
+       		
+            </div>
+          </form>
+          </center>
+        </div>
+      </div>
+    </main>
+    
+  </body>
+</html>
