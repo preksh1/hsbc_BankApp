@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+
+function customer_list(){
+	
+	var x=new XMLHttpRequest();
+	//step 2 how xhr will open connection with server
+	x.open("GET","customer.jsp",true);
+	
+	//step 3 how xhr will send request
+	x.send();
+	
+	//step 4 how xhr will get response from server
+	//state={0,1,2,3,4}
+	
+	x.onreadystatechange=function(){
+		if(x.readyState==4){
+			var vv=x.responseText;
+			document.getElementById("cus").innerHTML=vv;
+			
+		}
+	}
+	
+}
+
+function accountFields(){
+	
+	var x=new XMLHttpRequest();
+	//step 2 how xhr will open connection with server
+	var c=document.getElementById("custId").value;
+	//var d=parseInt(c);
+	x.open("GET","FormFields.jsp?custId="+c,true);
+	
+	//step 3 how xhr will send request
+	x.send();
+	
+	//step 4 how xhr will get response from server
+	//state={0,1,2,3,4}
+	
+	x.onreadystatechange=function(){
+		if(x.readyState==4){
+			var vv=x.responseText;
+			document.getElementById("form_elem").innerHTML=vv;
+			
+		}
+	}
+	
+	
+}
+function validate(i){
+	
+	
+function validate_deposit(){
+	
+	var x=new XMLHttpRequest();
+	//step 2 how xhr will open connection with server
+	x.open("GET","customer.jsp",true);
+	
+	//step 3 how xhr will send request
+	x.send();
+	
+	//step 4 how xhr will get response from server
+	//state={0,1,2,3,4}
+	
+	x.onreadystatechange=function(){
+		if(x.readyState==4){
+			var vv=x.responseText;
+			document.getElementById("cus").innerHTML=vv;
+			
+		}
+	}
+	
+}
+function validateMinBal(i){
+	var b=document.getElementById("balance").value;
+	if(i==0){
+		//new customer
+		if(b<20000){
+			alert("balance should be atleast 20,000");
+		}
+		
+	}
+	else{
+		//old customer
+		if(b<10000){
+			alert("balance should be atleast 10,000");
+		}
+	}
+	
+}
+function OverdraftAmount(i){
+	
+	var b=document.getElementById("overdraft").value;
+	if(i==0){
+		//new customer
+		if(b<0){
+			alert("should be atleast 0");
+		}
+		
+	}
+	else{
+		//old customer
+		if(b<30000){
+			alert("should be atleast 30,000");
+		}
+	}
+}
+
+validate_deposit();
+validateMinBal(i);
+OverdraftAmount(i);
+
+
+}
+</script>
+</head>
+
+
+<!--  <body onload="customer_list()">-->
+
+
+
+<body>
+<h1 align='center'>Open Account</h1>
+<form action="post" method="">
+
+<table border='0' width='580px' cellpadding='10' cellspacing='0' align='center'>
+
+<tr>
+<td>Customer ID </td>
+
+<td>
+<td><input type=text id="id" name="id" placeholder="Select Customer ID" onclick="customer_list()"></input> 	
+<div id="cus"></div></br></td>
+<!--  
+<select name="custId">
+    <c: forEach items="${customers}" var="customer">
+        <option value="${customer.CustID}"><c:out value="${customer.CustID}" /></option>
+    </c:forEach>
+</select>
+-->
+</td>
+</tr>
+<tr>
+<td>Did not find the customer ID?<br></td>
+<td><a href="new_customer.html">Click here to register as a New Customer</a><br></td>
+</tr>
+<br>
+<div id="form_elem"></div>
+
+</table>
+
+
+</form>
+
+</body>
+</html>
