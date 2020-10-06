@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+var login_attempts=3;
+
+
+function check_form()
+{
+ var name=document.getElementById("name").value;
+ var id=document.getElementById("cust_id").value;
+ 
+ 
+ 
+//step 1 how to get xhr
+	var x=new XMLHttpRequest();
+	//step 2 how xhr will open connection with server
+	x.open("GET","Cust.jsp?n="+name+"&i="+id,true);
+	
+	//step 3 how xhr will send request
+	x.send();
+	
+	//step 4 how xhr will get response from server
+	//state={0,1,2,3,4}
+	
+	x.onreadystatechange=function(){
+		if(x.readyState==4){
+			 var vv1=x.responseText;
+			
+			
+			if(vv1.trim()==="YES")
+			 {
+			  alert("SuccessFully Logged In");
+			 window.location.href="Validation.html";
+			 }
+			
+
+			 else
+			 {
+			  if(login_attempts==0)
+			  {
+			   alert("No Login Attempts Available");
+			   
+			  }
+			  else
+			  {
+			   login_attempts=login_attempts-1;
+			   alert("Login Failed Now Only "+login_attempts+" Login Attempts Available");
+			   if(login_attempts==0)
+			   {
+			    
+			    document.getElementById("reg").disabled=true;
+			   }
+			  }
+			 }
+			
+		}
+	}
+
+ 
+ return false;
+}
+</script>
+
+<p align="center"> Customer Registration Page For Online Banking</p>
+	
+	<form onsubmit="return check_form()">
+		
+		CUSTOMER-ID: <input type=text name=cust_id id="cust_id" required pattern="[0-9]*"> <br>
+		USERName:	 <input type=text name=name id="name" required> <br>
+		        	 <input type=submit value=Verify id="reg"  > <br>
+	
+	
+	
+	
+	</form>
+	
+
+
+</body>
+</html>
