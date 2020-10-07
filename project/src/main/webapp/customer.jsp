@@ -1,14 +1,15 @@
-<%@page import="java.util.*,com.project.dao.Dao,com.project.entity.CustomerDetails,com.project.dao.DaoInterface"%>
+<%@page import="java.util.*,com.project.dao.Dao,com.project.dao.DaoInterface" %>
 
 <%
-
+//List<String> i=new ArrayList<String>();
 //i.add("1234");
 //i.add("5678");
-DaoInterface d=new Dao();
- List<CustomerDetails> ll = d.displayCustomer();
+DaoInterface di=new Dao();
+List<Integer> i=di.displayCustomer();
 String ss="<select onClick=accountFields() id=custId >";
-for(CustomerDetails i:ll){
-	ss=ss+"<option>"+i+"</option>";
+for(Integer ll:i){
+	//ss=ss+"<option>"+ll+"</option>";
+	ss=ss+"<option value='"+ll+"'>"+ll+"</option>";
 }
 ss=ss+"</select>";
 out.println(ss);

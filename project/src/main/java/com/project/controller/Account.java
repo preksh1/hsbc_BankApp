@@ -11,12 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
 /**
- * Servlet implementation class RegisterCustomer
+ * Servlet implementation class Account
  */
-public class RegisterCustomer extends HttpServlet {
+public class Account extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -25,24 +23,25 @@ public class RegisterCustomer extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		
+		try {
 		response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 	
-        String cid=request.getParameter("cid");
-        int x=Integer.parseInt(cid);
-       // int cid = request.getAttribute(cid);
-        String name = request.getParameter("name");
-        String address = request.getParameter("address");
-        String pan = request.getParameter("pan");
-        String dob = request.getParameter("dob");
-        String p_ph = request.getParameter("p_ph");
-        String p_email = request.getParameter("p_email");
-        String a_ph = request.getParameter("a_ph");
-        String a_email = request.getParameter("a_email");
+    //    String accountNo=request.getParameter("accountNo");
+    //    int a=Integer.parseInt(accountNo);
+     //   String customerID=request.getParameter("customerID");
+    //	int c=Integer.parseInt(customerID);
+    	String accountType=request.getParameter("accountType");
+    	String depositAmount=request.getParameter("depositAmount");
+    	int d=Integer.parseInt(depositAmount) ;
+    	 String minimumBalance=request.getParameter("minimumBalance");
+    	int m=Integer.parseInt(minimumBalance);
+    	 String overdraftAmount=request.getParameter("overdraftAmount");
+    	int o=Integer.parseInt(overdraftAmount);
         
         
-        try {
+        
+        
         
             // loading drivers for mysql
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
@@ -51,22 +50,20 @@ public class RegisterCustomer extends HttpServlet {
             Connection con = DriverManager.getConnection("jdbc:derby:c:/firstdb1;create=true","richa","priya");
            // Connection con = DriverManager.getConnection("jdbc:derby:e:/db2;");
             PreparedStatement ps = con.prepareStatement
-                        ("insert into CUSTOMER_DETAILS values(?,?,?,?,?,?,?,?,?)");
+                        ("insert into ACCOUNT_DETAILS values(?,?,?,?)");
 
-            ps.setInt(1, x);
-            ps.setString(2, name);
-            ps.setString(3, address);
-            ps.setString(4, pan);
-            ps.setString(5, dob);
-            ps.setString(6, p_ph);
-            ps.setString(7, p_email);
-            ps.setString(8, a_ph);
-            ps.setString(9, a_email);
+           // ps.setInt(1, a);
+           // ps.setInt(2, c);
+            ps.setString(3, accountType);
+            ps.setInt(4, d);
+            ps.setInt(5, m);
+            ps.setInt(6, o);
+            
             int i = ps.executeUpdate();
             
             if(i > 0) {
-                out.println("You are sucessfully registered");
-                response.sendRedirect("open_account.html");
+                out.println("Account Created");
+               
             }
         
         }
@@ -75,4 +72,6 @@ public class RegisterCustomer extends HttpServlet {
         }
 	}
 
-}
+	}
+
+

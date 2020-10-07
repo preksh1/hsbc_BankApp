@@ -12,6 +12,7 @@ import java.util.List;
 import com.project.entity.CustomerDetails;
 
 
+
 public class Dao implements DaoInterface{
 
 	Connection con=null;
@@ -23,7 +24,7 @@ public class Dao implements DaoInterface{
 	public int checkNewCustomer(Integer custId) throws Exception {
 		// TODO Auto-generated method stub
 		int i=0;
-		PreparedStatement ps=con.prepareStatement("select * from ACCOUNT_DETAILS where C_ID=?");
+		PreparedStatement ps=con.prepareStatement("select * from account_details where c_id=?");
 		ps.setInt(1, custId);
 		
 		ResultSet res=ps.executeQuery();
@@ -34,20 +35,37 @@ public class Dao implements DaoInterface{
 		
 	}
 	
-	public List<CustomerDetails> displayCustomer() throws Exception {
+	//public List<Integer> displayCustomer() throws Exception {
+	public List<Integer> displayCustomer() throws Exception {
 		List<CustomerDetails> ll=new ArrayList<CustomerDetails>();
 		
 		
-			PreparedStatement ps=con.prepareStatement("select CUST_ID from CUSTOMER_DETAILS");
+			PreparedStatement ps=con.prepareStatement("select cust_id from customer_details");
 			ResultSet res=ps.executeQuery();
+			List<Integer> a=new ArrayList<Integer>();
 			while(res.next()) {
-				CustomerDetails a=new CustomerDetails();
-				 a.setCustId(res.getInt("customerID"));
-				 ll.add(a);
+				//CustomerDetails a=new CustomerDetails();
+				 a.add(res.getInt("cust_id"));
+				 //ll.add(a);
 			}
-						return ll;
+						return a;
 	}
 
-	
+	public boolean checkPhone(CustomerDetails c) {
+		boolean i=false;
+		try {
+			PreparedStatement ps=con.prepareStatement("select * from facebook where email=?");
+			ps.setString(1, c.getPphone());
+			ResultSet res=ps.executeQuery();
+			if(res.next()) {
+				return true;
+			}
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 }
+
 

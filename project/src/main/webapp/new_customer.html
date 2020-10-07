@@ -5,18 +5,18 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 
-//function validate_phone(){
-	// var v=document.getElementById("p_ph").value;
-	  // var x=new XMLHttpRequest();
-	   //x.open("POST","checkphone.jsp?phone="+v,true);
-	 //  x.send();
-	//   x.onreadystatechange=function(){
-	//	   if(x.readyState==4){
-	//		   var vv=x.responseText;
-	//		   document.getElementById("phone").innerHTML=vv;
-	//	   }
-	//   }
-//}
+function validate_phone(){
+	 var v=document.getElementById("p_ph").value;
+	   var x=new XMLHttpRequest();
+	   x.open("POST","checkPhone.jsp?phone="+v,true);
+	  x.send();
+	   x.onreadystatechange=function(){
+		   if(x.readyState==4){
+			   var vv=x.responseText;
+			   document.getElementById("phone").innerHTML=vv;
+		   }
+	   }
+}
 
 </script>
 </head>

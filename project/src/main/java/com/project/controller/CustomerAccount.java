@@ -15,6 +15,7 @@ import com.project.entity.CustomerDetails;
 /**
  * Servlet implementation class CustomerAccount
  */
+
 public class CustomerAccount extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -27,7 +28,8 @@ public class CustomerAccount extends HttpServlet {
 		try {
 			d = new Dao(); 
 		
-		 List<CustomerDetails> ll = d.displayCustomer();
+		 //List<CustomerDetails> ll = d.displayCustomer();
+			List<Integer> ll = d.displayCustomer();
 	        request.setAttribute("customers", ll);
 	        request.getRequestDispatcher("open_account.html").forward(request, response);
 	

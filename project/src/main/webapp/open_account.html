@@ -6,6 +6,28 @@
 <script type="text/javascript">
 
 
+function customer_list(){
+	
+	var x=new XMLHttpRequest();
+	//step 2 how xhr will open connection with server
+	x.open("GET","customer.jsp",true);
+	
+	//step 3 how xhr will send request
+	x.send();
+	
+	//step 4 how xhr will get response from server
+	//state={0,1,2,3,4}
+	
+	x.onreadystatechange=function(){
+		if(x.readyState==4){
+			var vv=x.responseText;
+			document.getElementById("cus").innerHTML=vv;
+			
+		}
+	}
+	
+}
+
 function accountFields(){
 	
 	var x=new XMLHttpRequest();
@@ -30,7 +52,9 @@ function accountFields(){
 	
 	
 }
-
+function validate(i){
+	
+	
 function validate_deposit(){
 	
 	var x=new XMLHttpRequest();
@@ -85,26 +109,33 @@ function OverdraftAmount(i){
 			alert("should be atleast 30,000");
 		}
 	}
-	
+}
+
+validate_deposit();
+validateMinBal(i);
+OverdraftAmount(i);
+
+
 }
 </script>
 </head>
-<body>
 
+
+<!--  <body onload="customer_list()">-->
+
+
+
+<body>
 <h1 align='center'>Open Account</h1>
-<form action="CustomerAccount" method="">
+<form action="Account" method="post">
 
 <table border='0' width='580px' cellpadding='10' cellspacing='0' align='center'>
 
 <tr>
 <td>Customer ID </td>
 
-<td><select name="custId">
-    <c:forEach items="${customers}" var="customer">
-        <option value="${customer.CustID}"><c:out value="${customer.CustID}" /></option>
-    </c:forEach>
-</select>
-</td>
+<td><input type=text id="id" name="id" placeholder="Select Customer ID" onclick="customer_list()"></input> 	
+<div id="cus"></div><br></td>
 </tr>
 <tr>
 <td>Did not find the customer ID?<br></td>

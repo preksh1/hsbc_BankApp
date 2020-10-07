@@ -6,8 +6,8 @@ int x=Integer.parseInt(custId);
 DaoInterface di=new Dao();
 int i=di.checkNewCustomer(x);
 //output of i say 0 for no customer and 1 for customer found can handle js functions in the script of open account html
-out.println("<tr><td>Account Type</td><td><input type=radio id=saving name=account value=saving><label for=saving>Saving</label><input type=radio id=current name=account value=current><label for=current>Current</label><br></td></tr><tr><td>Deposit Amount</td><td><input type=text id=deposit name=deposit onClick=validateDeposit("+i+")></input><br></td></tr><tr><td>Minimum Balance</td><td><input type=text id=balance name=balance onClick=validateMinBal("+i+")></input><br></td></tr><tr><td>Overdraft Amount</td><td><input type=text id=overdraft name=overdraft onClick=OverdraftAmount("+i+")></input><br></td></tr>");
-
+out.println("<tr><td>Account Type</td><td><input type=radio id=saving name=account value=saving required><label for=saving>Saving</label><input type=radio id=current name=account value=current required><label for=current>Current</label><br></td></tr><tr><td>Deposit Amount</td><td><input type=text id=deposit name=deposit required></input><br></td></tr><tr><td>Minimum Balance</td><td><input type=text id=balance name=balance required></input><br></td></tr><tr><td>Overdraft Amount</td><td><input type=text id=overdraft name=overdraft required></input><br></td></tr>");
+out.println("<br><input type=submit value=Register id=bb onClick=validate("+i+") ><br>");
 		
 		
 		//document.getElementById("form_elem").innerHTML=
