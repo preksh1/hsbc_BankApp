@@ -1,4 +1,4 @@
-<%@page import="java.util.*,com.project.dao.Dao,com.project.dao.DaoInterface" %>
+<%@page import="java.util.*,com.open_account.dao.Dao,com.open_account.dao.DaoInterface" %>
 
 <%
 //List<String> i=new ArrayList<String>();

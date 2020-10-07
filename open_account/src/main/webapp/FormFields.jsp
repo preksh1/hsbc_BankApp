@@ -1,4 +1,4 @@
-<%@ page import="java.io.IOException,java.io.PrintWriter,javax.servlet.ServletException,javax.servlet.http.HttpServlet,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.project.dao.Dao,com.project.dao.DaoInterface"%>
+<%@ page import="java.io.IOException,java.io.PrintWriter,javax.servlet.ServletException,javax.servlet.http.HttpServlet,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.open_account.dao.Dao,com.open_account.dao.DaoInterface"%>
 
 <%
 String custId=request.getParameter("custId");

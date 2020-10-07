@@ -1,4 +1,4 @@
-<%@page import="java.util.*,com.project.dao.Dao,com.project.dao.DaoInterface,com.project.entity.CustomerDetails" %>
+<%@page import="java.util.*,com.open_account.dao.Dao,com.open_account.dao.DaoInterface,com.open_account.entity.CustomerDetails" %>
 
 <% 
 	String phone=request.getParameter("phone");
