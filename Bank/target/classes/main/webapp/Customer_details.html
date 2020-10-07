@@ -1,0 +1,44 @@
+
+
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Welcome to Bank</title>
+</head>
+<body style="background-color: grey">
+<p style="background-color: red;font-size:300%;align:center"> Welcome to Bank </p>
+<p style="align:centre">Please Enter Details to View</p>
+
+<script>
+function msg() {
+
+var url="http://localhost:8082/Banking/logout";
+alert(url);
+var x=new XMLHttpRequest();
+x.open("GET",url,true);
+x.send();
+	
+
+	
+}
+</script>
+<form action="CustomerDetails" method="Get">
+
+  <table align="center">
+       
+         <td>User ID</td>
+         <td><input type="text" name="uid" /></td>
+         </tr>
+        <tr>
+        
+        </tr>
+         <td></td>
+         <td><input type="submit" ></input>
+         <input type="reset" value="Reset"></input></td>
+         </tr>
+        </table>
+<input type= "button" id="log" value="logout" onClick="msg()"></input>
+<div id="output" ></div>
+</form>
+</body>
+</html>
