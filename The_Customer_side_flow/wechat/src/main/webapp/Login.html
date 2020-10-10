@@ -1,0 +1,73 @@
+ <!DOCTYPE html>  
+<html>
+
+<body style="background-color: grey" >
+<script type="text/javascript">
+
+function validate3(){
+	
+	
+	var name=document.getElementById("name").value;
+	
+	var id=document.getElementById("uid").value;
+	
+	
+	var x=new XMLHttpRequest();
+	
+	x.open("GET","http://localhost:8080/BankApp/Logins?val1="+name+"&val2="+id,true);
+	
+	//step 3 how xhr will send request
+	x.send();
+	
+	//step 4 how xhr will get response from server
+	//state={0,1,2,3,4}
+	
+	x.onreadystatechange=function(){
+		
+		if(x.readyState==4){
+			
+			 var v=x.responseText;
+			 alert(v);
+			 if(v.trim()==="YES")
+			 {
+			  alert("SuccessFully Logged In");
+			 window.location.href="http://localhost:8080/BankApp/CustomerDetails";
+			 }
+			
+		}
+	}
+}
+</script>
+<div style="text-align:center">
+<h1 style="background-color: red;font-size:300%;align:center">Login  </h1> </div>
+    <br>
+    <br>
+    <form method="Get" >
+      
+        <table align="center">
+         <tr>
+         <td>Username</td>
+         <td><input type="text" name="name" id="name"/></td>
+         </tr>
+         <tr>
+         <td>Password</td>
+         <td><input type="text" name="uid" id="uid"/></td>
+         </tr>
+        <tr>
+        
+        </tr>
+         <td></td>
+         <td align="center">
+         <input type="button" value="Logins" onclick="validate3()"></input><input
+         type="reset" value="Reset"></input>
+         </td>
+         </tr>
+        </table>
+    </form>
+
+
+
+
+
+</body>
+ </html>
