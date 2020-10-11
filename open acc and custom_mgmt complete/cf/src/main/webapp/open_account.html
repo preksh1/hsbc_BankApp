@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+var i=1;
+
+//i=1 for old account
+//i=0 for new account
+//i=2
+
+function customer_list(){
+	if(i==1){
+	var x=new XMLHttpRequest();
+	
+	//step 2 how xhr will open connection with server
+	
+	x.open("GET","customer.jsp",true);
+	
+	//step 3 how xhr will send request
+	x.send();
+	
+	//step 4 how xhr will get response from server
+	//state={0,1,2,3,4}
+	
+	x.onreadystatechange=function(){
+		if(x.readyState==4){
+			var vv=x.responseText;
+			document.getElementById("cus").innerHTML=vv;
+			
+		}
+		
+	}
+	
+	//if(i==1)
+	//if(document.getElementById("custId")!=null)	
+	//	document.getElementById("newCust").disabled=true;
+	
+	
+	}
+	
+}
+
+function disableOverd(){
+	
+	document.getElementById("overdraft").value=null;
+	document.getElementById("overdraft").disabled=true;
+	
+}
+
+
+
+
+function enabOverd(){
+	document.getElementById("overdraft").disabled=false;
+	
+}
+
+/*
+function accountFields(){
+	
+	var x=new XMLHttpRequest();
+	//step 2 how xhr will open connection with server
+	var c=document.getElementById("custId").value;
+	//var d=parseInt(c);
+	x.open("GET","FormFields.jsp?custId="+c,true);
+	
+	//step 3 how xhr will send request
+	x.send();
+	
+	//step 4 how xhr will get response from server
+	//state={0,1,2,3,4}
+	
+	x.onreadystatechange=function(){
+		if(x.readyState==4){
+			var vv=x.responseText;
+			document.getElementById("form_elem").innerHTML=vv;
+			
+		}
+	}
+	
+	
+}*/
+
+function phoneExtr(){
+	
+	
+	var v=document.getElementById("p_ph").value;
+	//alert('taking value'+v);
+	
+	var x=new XMLHttpRequest();
+	x.open("GET","checkPhone.jsp?phone="+v,true);
+	x.send();
+	x.onreadystatechange=function(){
+	if(x.readyState==4){
+		var vv=x.responseText;
+		document.getElementById("phon").value=vv.trim();
+		//alert('getting value'+vv.trim());
+		
+	}
+	
+	}
+}
+
+
+
+function registerFields(){
+
+	var c=document.getElementById("custId").value;
+	if(c=="Select Customer Id")
+	{
+	
+	i=0;
+	var x=new XMLHttpRequest();
+	var r=parseInt(((Math.random())*Math.pow(10,8))%Math.pow(10,8));
+	
+
+	//alert("val of c"+c);
+	
+		x.open("GET","newCustomer.jsp",true);
+	
+		x.send();
+	
+	
+	x.onreadystatechange=function(){
+		if(x.readyState==4){
+			var vv=x.responseText;
+			document.getElementById("form_elem").innerHTML=vv;
+			document.getElementById("cus").innerHTML=r;
+			document.getElementById("cus").value=r;
+		}
+	}
+	}
+	else{
+		
+		alert("already selected custmer id");
+	}
+	
+	
+	
+}
+
+
+
+
+
+</script>
+</head>
+
+
+<!--  <body onload="customer_list()">-->
+
+
+
+<body onload="customer_list()">
+	<h1 align='center'>Open Account</h1>
+	<form action="OpenAccountServlet1" method="post" onSubmit="return validate();">
+
+	<script>
+	
+	//var c=document.getElementById("cus").value;
+	//alert(c);
+	function validate(){
+		
+		if(i==1)
+			{
+				document.getElementById("cus").value=document.getElementById("custId").value;
+				
+			}
+		
+		document.getElementById("cus1").value=document.getElementById("cus").value;
+		
+		var c=document.getElementById("cus").value;
+		//alert(c);
+		if(c!="Select Customer Id")
+		{
+			
+			
+			function validate_phone(){
+				if(i==0)//new cust
+				{
+					
+				
+				var p=document.getElementById("phon").value;
+				//alert("phone validation"+p.trim());
+				
+				if(p.trim()=="1"){
+					
+					alert("phone number already used to create an account choose another one");
+					return false;
+				   }
+					else
+						return true;
+				}
+				else
+					return true;
+				
+				
+			}
+	
+				
+			
+		
+		
+	function validate_deposit(){
+		
+		//get the savings and current min balance from the transfer funds page rule
+		var m=document.getElementById("deposit").value;
+		var min_bal_maintain=10000;//take from transfer funds rule////////////////////////////////////////////////////////
+		if(m<= min_bal_maintain){
+			alert("need to maintain more than "+min_bal_maintain+" INR to create account");
+			return false
+		}
+		else
+			return true;//////////////////////////////////////////////////////////////////////////////////imppppp/////////////////////
+		
+	}
+	function validateMinBal(){
+		var b=document.getElementById("balance").value;
+		if(i==0){
+			//new customer
+			if(b<20000){
+				alert("new customer balance should be atleast 20,000");
+				return false;
+			}
+			else{
+				return true;
+			}
+			
+		}
+		else if (i==1){
+			//old customer
+			if(b<10000){
+				alert("old customer balance should be atleast 10,000");
+				return false;
+			}
+			else
+				return true;
+		}
+		
+	}
+	function OverdraftAmount(){
+		
+		//alert(document.getElementById("overdraft").value);
+		var b=document.getElementById("overdraft").value;
+		if(document.getElementById("overdraft").disabled==false)//need overdraft only if current clicked
+		{
+			
+			//var b=document.getElementById("overdraft").value;
+			alert(b);
+			if(i==0){
+			//new customer
+			
+			
+				if(b<0){
+					alert("new customer overdraft should be atleast 0");
+					return false;
+				}
+				else{
+					return true;
+				}
+			
+			}
+			else if(i==1){
+			//old customer
+			
+			
+				if(b<30000)
+				{
+					alert("old customer overdraft should be atleast 30,000");
+					return false;
+				}
+				else
+					return true;
+			}
+	   }
+		else 
+			{
+				return true;
+			}
+		
+	   //else
+	//	   {
+	//	   		document.getElementById("overdraft").disabled==true;
+	//	   }
+   }
+
+
+	var l=validate_phone();
+	//var l=true;
+	var x=validate_deposit();
+	var j=validateMinBal();
+	var k=OverdraftAmount();
+
+	//alert("hi ");
+	return (l&&x&&j&&k);
+	
+		}
+		else
+			{
+				alert("customer id not set/created");
+				return false;
+			
+			}
+
+
+	}
+	
+	
+	
+	</script>
+
+		<table border='0' width='580px' cellpadding='10' cellspacing='0'
+			align='center'>
+
+			<tr>
+				<td>Customer ID</td>
+
+				<td>
+				<td>
+				
+					<!--  <input type=text id="id" name="id" placeholder="Select Customer ID" onclick="customer_list()" tabindex="1"></input>-->
+
+					<div id="cus"></div>
+					<input type="hidden" name="CustomerId" id="cus1" >
+				</td>
+			</tr>
+			<tr>
+				<td>Did not find the customer ID?<br></td>
+				<!-- <td><a href="new_customer.html">Click here to register as a New Customer</a><br></td> -->
+				<td><button type="button" onClick="registerFields()"
+						id="newCust" tabindex="1">Click here to register as a
+						New Customer</button>
+					<br></td>
+					
+			</tr>
+			<tr>
+				<div id="form_elem" tabindex="1"></div>
+				<input type="hidden" name="phon" id="phon" >
+			</tr>
+			
+
+
+
+			<tr>
+				<td>Account Type</td>
+
+				<td><input type=radio id=saving name=account value=saving onClick="disableOverd()" required tabindex="1" > 
+					<label for=saving>Saving</label> 
+					<input type=radio id=current name=account value=current onClick="enabOverd()" required tabindex="1"> 
+					<label for=current>Current</label> <br></td>
+			</tr>
+			<tr>
+				<td>Deposit Amount</td>
+				<td><input type=text id=deposit name=deposit required></input>
+					<br></td>
+			</tr>
+			<tr>
+				<td>Minimum Balance</td>
+				<td><input type=text id=balance name=balance required></input>
+					<br></td>
+			</tr>
+			<tr>
+				<td>Overdraft Amount</td>
+				<td><input type=text id=overdraft name=overdraft required></input>
+				</td>
+			</tr>
+			
+
+		</table>
+		<br>
+		<input type=submit value="Open Account" id=bb><br>
+		<!-- onClick="validate()" -->
+
+	</form>
+
+</body>
+</html>
