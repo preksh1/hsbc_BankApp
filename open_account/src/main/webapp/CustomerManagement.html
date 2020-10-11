@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Customer Management</title>
+<script type="text/javascript">
+
+/*function loadLastSeen(){
+	alert("ht");
+	//document.getElementById("empName").innerHTML="<h5>hi</h5>";
+	current_time=new Date();
+	var x=new XMLHttpRequest();
+		//to open conXnection
+	x.open("GET","LastSeen.jsp?current_time="+current_time,true);
+		//xhr sends request
+	x.send();
+		
+		//xhr response from server
+	x.onreadystatechange=function(){
+		if(x.readyState==4){
+				var vv=x.responseText;
+				document.getElementById("lastAccess").innerHTML="last accessed: "+vv;
+			}
+		}
+
+		
+		
+}*/
+
+function loadLastSeen(){
+	var x=new XMLHttpRequest();
+	//to open connection
+x.open("GET","LastSeen.jsp?current_time="+current_time,true);
+	//xhr sends request
+x.send();
+	
+	//xhr response from server
+x.onreadystatechange=function(){
+	if(x.readyState==4){
+			var vv=x.responseText;
+			document.getElementById("lastAccessed").innerHTML="last accessed: "+vv;
+		}
+	}
+	
+}
+
+
+function loadEmployeeInfo(){
+	var x=new XMLHttpRequest();
+	//to open connection
+	x.open("GET","CustomerManagementServlet.jsp",true);
+	//xhr sends request
+	x.send();
+	//xhr response from server
+	x.onreadystatechange=function(){
+	if(x.readyState==4){
+			var vv=x.responseText;
+			document.getElementById("info").innerHTML=vv;
+		}
+	}
+	
+}
+
+</script>
+</head>
+<style>
+
+
+#outer{
+
+line-height:80px;
+vertical-align:middle;
+text-align: center;
+font-weight:bold;
+font-size:40px;
+
+
+}
+#header{
+	background-color:rgb(255, 51, 51);
+	border-style:ridge;
+
+}
+#inner{
+	
+	border-style:ridge;
+	background-color:rgb(242, 242, 242);
+	
+}
+
+
+
+
+</style>
+
+
+<body onload="loadEmployeeInfo()">
+<!--  <form action="OpenAccount.html" onsubmit="OpenAccount.html"></form>-->
+<form method="post" >
+
+ <!-- 
+<table width="80%" align="center" border="2">
+	<tbody><tr>
+	<td>
+	<div id="header">&nbsp;
+	<div align="center">HSBC Bank Application</div>
+	</div>
+	</td>
+	</tr>
+	
+	<tr><td></td><td></td></tr><tr><td></td><td></td></tr>
+	<tr>
+		
+		<td>
+	</tbody>
+	<p>Welcome Employee xyz</p><p id="empName">
+	<p>Your Employee id is: </p><div id="empId"></div>
+	
+
+
+<br><p>Click below to open account </p>
+
+<input type="submit" value="Open an Account" onClick="">
+
+
+</table>
+ -->
+
+
+	
+	
+		<div  id="header"><div align="center" id="outer"> HSBC Bank Application </div>
+		<p align="left" id=lastAccess > </p>
+		 </div>
+		
+		<div id="inner">
+		<div align="center" id="info">
+		
+		</div>
+		
+		<p>Click below to open an account!</p>
+<br>
+<!-- <a href="E:\hsbc_training\w4\project-20201006T083353Z-001\project\src\main\webapp\open_account.html"> -->
+<input type="submit" value="Open an Account" onclick="location.href='\open_account.html';" />
+
+<!-- "document.location='E:\hsbc_training\w4\project-20201006T083353Z-001\project\src\main\webapp\open_account.html'" -->
+<br>
+&nbsp;
+
+</div>
+
+
+</body>
+</html>

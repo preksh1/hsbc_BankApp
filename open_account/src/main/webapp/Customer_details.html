@@ -1,0 +1,86 @@
+
+
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Welcome to Bank</title>
+</head>
+<body  onload="msg()">
+<p style="background-color: red;font-size:300%;align:center"> Welcome to Bank </p>
+<p style="align:centre">YOUR Details to View</p>
+
+<script type="text/javascript">
+function msg(){
+
+
+	alert("YOOOOOOOOLOOOOOOOOO");
+	
+	var x=new XMLHttpRequest();
+	
+	x.open("GET","CustomerDetails",true);
+	
+	
+	x.send();
+	
+	
+	x.onreadystatechange=function(){
+		
+		if(x.readyState==4){
+			
+			 var v=x.responseText;
+			
+			 document.getElementById("output").innerHTML=v;
+			 
+			 }
+			
+			
+			
+		}
+	}
+	
+
+function update(){
+
+
+	alert("Updating");
+	
+	var x=new XMLHttpRequest();
+	
+	x.open("GET","http://localhost:8080/wechat/Logout_Customer",true);
+	
+	
+	x.send();
+	
+	
+	x.onreadystatechange=function(){
+		
+		if(x.readyState==4){
+			alert("Updated");
+			 var v=x.responseText;
+			
+			alert(v);
+			 
+			 }
+			
+			
+			
+		}
+	}
+
+	
+
+</script>
+
+
+<div id="output" ></div>
+
+<form>
+
+<a href=EditCustomerDetails.css>Edit Profile</a>
+<a href=TransferFunds.html>Transfer Funds</a>
+<input type=button value=LOGOUT id=bb  onclick="update()"> 
+</form>
+
+
+</body>
+</html>

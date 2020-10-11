@@ -1,0 +1,65 @@
+<!DOCTYPE html>  
+<html>
+<title>Customer Login</title>
+<link rel="stylesheet" href="css/style.css">
+<body>
+<script type="text/javascript">
+
+function validate3(){
+	
+
+	var name=document.getElementById("name").value;
+	
+	var id=document.getElementById("uid").value;
+	
+	
+	var x=new XMLHttpRequest();
+	
+	x.open("GET","Logins?val1="+name+"&val2="+id,true);
+	
+	//step 3 how xhr will send request
+	x.send();
+	
+	//step 4 how xhr will get response from server
+	//state={0,1,2,3,4}
+	
+	x.onreadystatechange=function(){
+		
+		if(x.readyState==4){
+			
+			 var v=x.responseText;
+			
+			 if(v.trim()==="YES")
+			 {
+			  alert("SuccessFully Logged In");
+			 window.location.href="Customer_details.html";
+			 }
+			
+		}
+	}
+}
+</script>
+<div class="login-box">
+<center>
+<h1 align="center">Customer Login</h1> 
+    
+    <form method="Get" >
+      
+      	<div class="user-box">
+        <input type="text" name="name" id="name" placeholder="Username">
+         </div>
+         
+         <div class="user-box">
+         <input type="text" name="uid" id="uid" placeholder="Password">
+        </div>
+        
+         <input type="button" value="Logins" onclick="validate3()" class="verify"></input><input type="reset" value="Reset" class="verify"></input>
+         
+    </form>
+</center>
+
+</div>
+
+
+</body>
+ </html>
