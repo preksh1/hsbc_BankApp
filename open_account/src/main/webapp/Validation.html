@@ -5,6 +5,58 @@
 
 <title>Validations</title>
 <link rel="stylesheet" href="css/style.css">
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: crimson;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
 </head>
 <body onload= "validate1(); validate2();">
 <script type="text/javascript">
@@ -117,24 +169,42 @@ function validate3(){
 
 
 </script>
+<div class="login-box">
 
-
-<p align="center"> Customer Credentials Validation Page</p>
+<h1>Customer Credentials Validation</h1>
 	
 	<form >
 	 
 				 <div id="id1"></div><br>
-		         <input type=text name=pancard id="info1"><br>
+				 <div class="user-box">
+		         <input type=text name=pancard id="info1">
+		         </div>
 		   	     <div id="id2" ></div><br>
-		   		 <input type=text name=phone id="info2" name=d2 ><br>
-		         <input type=submit value=Register id=bb  onclick="validate3()"> 			
+		   	     <div class="user-box">
+		   		 <input type=text name=phone id="info2" name=d2 >
+		   		 </div>
+		         <input type=submit value=Register id=bb  onclick="validate3()" class="verify"> 			
 	
 	
 	
 	
 	</form>
-
-
+</div>
+<div class="foot">
+<footer class="footer-area">
+    <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                       
+                        <p class="copyright">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved </p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+ </footer>
+ </div>
 
 </body>
 </html>

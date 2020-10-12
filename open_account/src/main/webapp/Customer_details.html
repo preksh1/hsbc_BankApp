@@ -3,7 +3,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Welcome to Bank</title>
+<title>Details</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body  onload="msg()">
 <p style="background-color: red;font-size:300%;align:center"> Welcome to Bank </p>
@@ -71,16 +72,16 @@ function update(){
 
 </script>
 
-
+<div class="login-box">
 <div id="output" ></div>
 
 <form>
 
-<a href=EditCustomerDetails.css>Edit Profile</a>
-<a href=TransferFunds.html>Transfer Funds</a>
-<input type=button value=LOGOUT id=bb  onclick="update()"> 
+<a href=EditCustomerDetails.css class="link">Edit Profile</a>
+<a href=TransferFunds.html class="link">Transfer Funds</a>
+<input type=button value=LOGOUT id=bb  onclick="update()" class="verify"> 
 </form>
-
+</div>
 
 </body>
 </html>
