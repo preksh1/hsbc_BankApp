@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<style>
+
+.background {
+    background-color: red;
+    width: 400px;
+    height:10px;
+    padding:50px;
+  }
+
+</style>
+
+<style>
+
+.main {
+  
+  background-color: lightgrey;
+  width: 500px;
+  height:250px;
+  border: 2px solid black;
+  
+  margin: 150px;
+}
+</style>
+</head>
+<body>
+<form action="LoginServlet"  method="post">
+<center>
+
+<div class=main>
+
+<div class=background style="color:white"><font size="+2">EMPLOYEE LOGIN</font></div>
+
+<br>
+<br>
+<table>
+
+<tr>
+	<th>Username:</th>
+	<th><input type=text id="uname" name=name required></th>
+</tr>
+<tr>
+	<th>Password</th>
+	<th><input type=password id="pwd" name=pass required></th>
+</tr>
+
+<tr>
+	<th> </th>
+	<th><input type=submit value=LOGIN id="button" style="float:left"></th>
+	</tr>
+
+</table>
+
+</div>
+</center>
+</form>
+</body>
+</html>
+
