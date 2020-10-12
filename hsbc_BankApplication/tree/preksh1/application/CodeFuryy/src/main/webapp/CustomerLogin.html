@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<script type="text/javascript">
+var login_attempts=3;
+
+
+function check_form()
+{
+ var name=document.getElementById("name").value;
+ var pwd=document.getElementById("password").value;
+ 
+ 
+ 
+//step 1 how to get xhr
+	var x=new XMLHttpRequest();
+	//step 2 how xhr will open connection with server
+	x.open("GET","Cust.jsp?n="+name+"&i="+pwd,true);
+	
+	//step 3 how xhr will send request
+	x.send();
+	
+	//step 4 how xhr will get response from server
+	//state={0,1,2,3,4}
+	
+	x.onreadystatechange=function(){
+		if(x.readyState==4){
+			 var vv1=x.responseText;
+			
+			
+			if(vv1.trim()==="NO")
+			 
+			 {
+				  if(login_attempts==0)
+				  {
+				   alert("No Login Attempts Available");
+				   
+				  }
+				  else
+				  {
+				   login_attempts=login_attempts-1;
+				   alert("Login Failed Now Only "+login_attempts+" Login Attempts Available");
+				   if(login_attempts==0)
+				   {
+				    
+				    document.getElementById("reg").disabled=true;
+				   }
+			  }
+			 }
+			
+		}
+	}
+
+ 
+ return false;
+}
+</script>
+
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
+	<p align="center">CUSTOMER LOGIN</p>
+	
+		<form onsubmit="return check_form()" action="" method="POST">
+		
+		Username: <input type=text name=name id="name" > <br><br>
+		Password:	 <input type=password name=password id="password" required> <br><br>
+		<div class="g-recaptcha" data-sitekey="6Ldm39QZAAAAALf5Fxho7cS-9TUQWe9ky5dVydIl"></div><br><br>
+		        	 <input type=submit value=LOGIN id="login"  > <br>
+	
+	
+	
+	
+	</form>
+	
+
+
+</body>
+</html>

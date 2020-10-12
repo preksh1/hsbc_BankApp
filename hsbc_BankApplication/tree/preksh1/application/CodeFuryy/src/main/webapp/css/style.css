@@ -1,0 +1,394 @@
+/*--home page--*/
+
+
+nav {
+	margin: 25px auto 0;
+	position: relative;
+	width: 800px;
+	height: 50px;
+	background-color: black;
+	border-radius: 8px;
+	font-size: 0;
+}
+nav a {
+	line-height: 50px;
+	height: 100%;
+	font-size: 15px;
+	display: inline-block;
+	position: relative;
+	z-index: 1;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+}
+nav .animation {
+	position: absolute;
+	height: 100%;
+	top: 0;
+	z-index: 0;
+	transition: all .5s ease 0s;
+	border-radius: 8px;
+	text-decoration: none;
+}
+a:hover{
+	text-decoration:none;
+	color:white;
+}
+a:nth-child(1) {
+	width: 200px;
+}
+a:nth-child(2) {
+	width: 200px;
+}
+a:nth-child(3) {
+	width: 200px;
+}
+
+a:nth-child(4) {
+	width: 200px;
+}
+nav .start-home, a:nth-child(1):hover~.animation {
+	width: 200px;
+	left: 0;
+	background-color: crimson;
+}
+nav .start-about, a:nth-child(2):hover~.animation {
+	width: 200px;
+	left: 200px;
+	background-color: crimson;
+}
+nav .start-services, a:nth-child(3):hover~.animation {
+	width: 200px;
+	left: 400px;
+	background-color: crimson;
+}
+
+nav .start-contact, a:nth-child(4):hover~.animation {
+	width: 200px;
+	left: 600px;
+	background-color: crimson;
+}
+
+body {
+	font-size: 12px;
+	font-family: sans-serif;
+	background: grey;
+}
+
+.intro-header {
+    padding-top: 35px;
+    padding-bottom: 35px;
+    text-align: center;
+    color: white;
+}
+
+.intro-message {
+    position: relative;
+    padding-top: 10%;
+    padding-bottom: 2%;
+}
+
+.intro-message > h1 {
+    margin: 0;
+    text-shadow: 5px 5px 5px black;
+    font-weight: bolder;
+    font-size:100px;
+}
+
+.intro-divider {
+    width: 500px;
+    border-top: 1.5px solid white;
+    border-bottom: 1px solid black;
+}
+
+.intro-message > h3 {
+    text-shadow: 2px 2px 2px black;
+    font-size:35px;
+}
+
+
+@media(max-width:767px) {
+    .intro-message {
+        padding-bottom: 15%;
+    }
+
+    .intro-message > h1 {
+        font-size: 50px;
+    }
+
+    ul.intro-social-buttons > li {
+        display: block;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    ul.intro-social-buttons > li:last-child {
+        margin-bottom: 0;
+    }
+
+    .intro-divider {
+        width: 100%;
+    }
+}
+
+.network-name {
+	text-align:center;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color:crimson;
+}
+
+.content-section-a {
+    padding: 50px 0;
+    
+}
+.lead {
+    font-size: 18px;
+}
+
+.contact-info {
+    padding: 30px 50px;
+    color: black;
+    background: white;
+    border-radius: 10px;
+}
+
+.contact-info .info {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 40px;
+}
+
+
+.contact-info .info li {
+    margin-bottom: 30px;
+    position: relative;
+    padding-left: 60px;
+    line-height: 20px;
+    font-size:15px;
+}
+
+.contact-info .info li:last-child {
+    margin-bottom: 0;
+}
+
+.contact-info .info li .info-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 30px;
+    background-color: crimson;
+    border-radius: 50%;
+}
+
+.contact-info .info li .info-icon i.glyphicon {
+   color:black;
+}
+
+
+.footer-area .footer-bottom .copyright {
+    border-top: 1px solid white;
+    text-align: center;
+    padding: 30px;
+    color: black;
+    font-size:15px;
+}
+
+.page-title {
+    margin-bottom: 50px;
+    font-weight:bolder;
+}
+
+.page-title .title {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.bar-title {
+    position: relative;
+    padding-bottom: 10px;
+    color:white;
+}
+
+.bar-title:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 500px;
+    height: 1.5px;
+    background-color: black;
+}
+
+
+.feature-box {
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    background-color: white;
+   
+}
+
+.para{
+	text-align:justify;
+	font-size:15px;
+	line-height:1.5;
+	color:black;
+}
+
+.heading{
+	color:crimson;
+	font-weight:bold;
+	font-size:18px;
+	text-align:center;
+}
+
+.text{
+	width:100%;
+	text-align:justify;
+	font-size:18px;
+	line-height:2;
+	background:white;
+	padding:30px;
+	margin:auto;
+	color:black;
+	border-radius:5px;
+}
+
+/*Employee login*/
+
+.background {
+    background-color: crimson;
+    width: 400px;
+    height:10px;
+    padding:50px;
+    color:white;
+    font-size:30px;
+    font-family:sans-serif;
+  }
+  
+  .main {
+  
+  background-color: silver;
+  width: 500px;
+  height:250px;
+  border: 2px solid black;
+  border-radius:5px;
+  margin: 150px;
+}
+
+.input{
+	font-size:20px;
+}
+.submit{
+	float:left;
+}
+
+.submit:hover{
+	background-color:silver;
+}
+
+
+/* customer registration for online banking */
+
+.login-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: silver;
+  box-sizing: border-box;
+  
+  border-radius: 10px;
+}
+
+
+.login-box h1 {
+  text-transform: uppercase;
+  font-family:sans-serif;
+  color: crimson;
+  text-align: left;
+  font-size:24px;
+}
+
+.login-box .user-box {
+  position: relative;
+}
+
+.login-box .user-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: white;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid white;
+  outline: none;
+  background: transparent;
+}
+
+
+.verify {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  margin-top: 40px;
+  letter-spacing: 4px;
+  border:none;
+  background: crimson;
+  border-radius: 5px;
+ 
+}
+
+.verify:hover {
+  
+  color: black;
+  border-radius: 5px;
+  
+}
+
+/* locked account */
+
+.head{
+	font-size:20px;
+	color:crimson;
+}
+.msg{
+	font-size:15px;
+	font-weight:bold;
+}
+
+/*customer management */
+
+.account{
+	font-family: sans-serif;
+	font-size:25px;
+	font-weight:bold;
+	color:crimson;
+}
+
+.foot{
+	position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: transparent;
+  color: white;
+  text-align: center;
+}
