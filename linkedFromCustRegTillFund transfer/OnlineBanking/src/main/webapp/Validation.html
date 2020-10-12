@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+
+<title>Insert title here</title>
+</head>
+<body onload= "validate1(); validate2();">
+<script type="text/javascript">
+
+
+
+
+
+
+
+	var vv1="";
+	var vv2="";
+	
+	function validate1(){
+		
+	
+		// step 1 how to get xhr
+		var x=new XMLHttpRequest();
+		//step 2 how xhr will open connection with server
+		x.open("GET","email.jsp",true);
+		
+		//step 3 how xhr will send request
+		x.send();
+		
+		//step 4 how xhr will get response from server
+		//state={0,1,2,3,4}
+		
+		x.onreadystatechange=function(){
+			if(x.readyState==4){
+				 vv1=x.responseText;
+				document.getElementById("id1").innerHTML=vv1;
+				
+			}
+		}
+		
+	}
+	
+function validate2(){
+		
+	
+		// step 1 how to get xhr
+		var x=new XMLHttpRequest();
+		//step 2 how xhr will open connection with server
+		x.open("GET","random.jsp",true);
+		
+		//step 3 how xhr will send request
+		x.send();
+		
+		//step 4 how xhr will get response from server
+		//state={0,1,2,3,4}
+		
+		x.onreadystatechange=function(){
+			if(x.readyState==4){
+				
+				
+				 vv2=x.responseText;
+				
+				 if((vv1.trim().localeCompare(vv2.trim()))==0){
+					 validate1();
+				 }
+				document.getElementById("id2").innerHTML=vv2;
+				
+			}
+		}
+		
+	}
+	
+	
+function validate3(){
+	
+	alert("in validate 3");
+	var z=document.getElementById("id1").innerHTML;
+	
+	var y=document.getElementById("id2").innerHTML;
+	var a=document.getElementById("info1").value;
+	
+	var b=document.getElementById("info2").value;
+	
+	var x=new XMLHttpRequest();
+	
+	x.open("GET","http://localhost:8080/wechat/valid?val1="+z+"&val2="+y+"&val3="+a+"&val4="+b,true);
+	
+	//step 3 how xhr will send request
+	x.send();
+	
+	//step 4 how xhr will get response from server
+	//state={0,1,2,3,4}
+	alert("Before ready");
+	x.onreadystatechange=function(){
+		
+		if(x.readyState==4){
+			
+			 var v=x.responseText;
+			 if(v.trim()==="User-Validated"){
+				 alert("Credentials Validated");
+				 window.location.href="Reg3.html";
+			 }
+			 else{
+				 alert("Wrong Credentials Entered");
+				 
+			 }
+			
+			
+		}
+	}
+	
+	}
+	
+
+
+</script>
+
+
+<p align="center"> Customer Credentials Validation Page</p>
+	
+	<form >
+	 
+				 <div id="id1"></div><br>
+		         <input type=text name=pancard id="info1"><br>
+		   	     <div id="id2" ></div><br>
+		   		 <input type=text name=phone id="info2" name=d2 ><br>
+		         <input type=submit value=Register id=bb  onclick="validate3()"> 			
+	
+	
+	
+	
+	</form>
+
+
+
+</body>
+</html>
